@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barcode & QR Code Scanner with Adjusted Settings</title>
+    <title>Barcode & QR Code Scanner with Environment Camera</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/html5-qrcode/minified/html5-qrcode.min.js"></script>
 </head>
@@ -31,11 +31,11 @@
         const scanResult = document.getElementById("scanResult");
         let scanning = false;
 
-        // 開始掃描功能，強制使用前鏡頭並調整設置
+        // 開始掃描功能，強制使用後鏡頭
         document.getElementById("startScan").addEventListener("click", () => {
             if (!scanning) {
                 html5QrCode.start(
-                    { facingMode: { exact: "user" } }, // 強制使用前鏡頭
+                    { facingMode: { exact: "environment" } }, // 強制使用後鏡頭
                     { fps: 5, qrbox: 300 }, // 調整 fps 和 qrbox 大小
                     (decodedText) => {
                         scanResult.value = decodedText;
